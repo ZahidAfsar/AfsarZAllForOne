@@ -1,10 +1,11 @@
 let SubmitBtn = document.getElementById("SubmitBtn");
+let num1 = document.getElementById("num1")
 let SayHelloText = document.getElementById("SayHelloText");
-let user = document.getElementById("user");
 
 
-const SayHelloEndpoint = async user => {
-    const promise = await fetch(`http://localhost:5143/SayHello/NameReturn/${user}`);
+
+const OddEvenEndpoint = async num1 => {
+    const promise = await fetch(`http://localhost:5143/ChallengeSix/ODDorEVEN/${num1}`);
     const data = await promise.text();
     console.log(data)
     return data;
@@ -12,9 +13,9 @@ const SayHelloEndpoint = async user => {
 
 
 SubmitBtn.addEventListener('click', async () => {
-    if(user.value)
+    if(num1.value)
     {
-    let getData = await SayHelloEndpoint(user.value);
+    let getData = await OddEvenEndpoint(num1.value);
     SayHelloText.textContent = getData;
     }
 });
